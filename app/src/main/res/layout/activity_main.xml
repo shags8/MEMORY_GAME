@@ -8,6 +8,7 @@
 
     <Button
         android:id="@+id/red"
+        android:tag="4"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text=""
@@ -21,6 +22,7 @@
 
     <Button
         android:id="@+id/blue"
+        android:tag="1"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text=""
@@ -34,6 +36,7 @@
 
     <Button
         android:id="@+id/yellow"
+        android:tag="2"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text=""
@@ -47,6 +50,7 @@
 
     <Button
         android:id="@+id/green"
+        android:tag="3"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text=""

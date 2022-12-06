@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
         var b2 = findViewById<Button>(R.id.yellow)
         var b3 = findViewById<Button>(R.id.green)
         var b4 = findViewById<Button>(R.id.red)
-        var j = 1
         b1.setOnClickListener{
             var mp2 = MediaPlayer.create(this,R.raw.blue)
             mp2.start()
@@ -32,6 +31,13 @@ class MainActivity : AppCompatActivity() {
             var mp = MediaPlayer.create(this,R.raw.red)
             mp.start()
         }
+    }
+    fun game(view: View){
+        var j = 1
+        var b1 = findViewById<Button>(R.id.blue)
+        var b2 = findViewById<Button>(R.id.yellow)
+        var b3 = findViewById<Button>(R.id.green)
+        var b4 = findViewById<Button>(R.id.red)
         while (j<=6) {
             for(i in 1..j) {
                 var colour = (1..4).random()
@@ -49,9 +55,17 @@ class MainActivity : AppCompatActivity() {
                         b4.performClick()
                     }
                 }
-                var arr = ArrayList<Int>(6)
+                var arr = ArrayList<Int>()
                 arr.add(colour)
                 ++j
+                var buttonTag = 0
+                val v = view as Button
+                buttonTag = v.tag.toString().toInt()
+                var arr2 = ArrayList<Int>()
+                arr2.add(buttonTag)
+                var s = arr.size
+                var s2 = arr2.size
+
             }
 
         }
