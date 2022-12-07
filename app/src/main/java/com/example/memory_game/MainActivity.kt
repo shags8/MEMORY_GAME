@@ -3,11 +3,17 @@ package com.example.memory_game
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Button
+import kotlinx.coroutines.delay
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.concurrent.schedule
 import kotlin.concurrent.timer
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -32,42 +38,54 @@ class MainActivity : AppCompatActivity() {
             mp.start()
         }
     }
-    fun game(view: View){
-        var j = 1
+    fun colourSound(colour : Int){
         var b1 = findViewById<Button>(R.id.blue)
         var b2 = findViewById<Button>(R.id.yellow)
         var b3 = findViewById<Button>(R.id.green)
         var b4 = findViewById<Button>(R.id.red)
-        while (j<=6) {
-            for(i in 1..j) {
-                var colour = (1..4).random()
-                when (colour) {
-                    1 -> {
-                        b1.performClick()
-                    }
-                    2 -> {
-                        b2.performClick()
-                    }
-                    3 -> {
-                        b3.performClick()
-                    }
-                    else -> {
-                        b4.performClick()
-                    }
-                }
-                var arr = ArrayList<Int>()
-                arr.add(colour)
-                ++j
+        when (colour) {
+            1 -> {
+                b1.performClick()
+            }
+            2 -> {
+                b2.performClick()
+            }
+            3 -> {
+                b3.performClick()
+            }
+            else -> {
+                b4.performClick()
+            }
+        }
+
+    }
+     fun game(){
+         for(i in 0..6){
+             var s = 0
+             var arr = ArrayList<Int>()
+             arr.clear()
+             for (j in 0..i){
+                 var colour = (1..4).random()
+                 arr.add(colour)
+                 colourSound(colour)
+                 s = arr.size
+             }
+         }
                 var buttonTag = 0
-                val v = view as Button
-                buttonTag = v.tag.toString().toInt()
+               // val v = view as Button
+              //  buttonTag = v.tag.toString().toInt()
                 var arr2 = ArrayList<Int>()
                 arr2.add(buttonTag)
-                var s = arr.size
                 var s2 = arr2.size
+               // for(i in 0..s){
+                //    if(arr[i]==arr2[i])
+                  //      continue
+                 //   else{
+                   //     var mp4 = MediaPlayer.create(this,R.raw.wrong)
+                  //      mp4.start()
+                 //       game(view)
+                 //   }
 
-            }
-
-        }
+               // }
     }
 }
