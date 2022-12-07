@@ -13,7 +13,9 @@ import kotlin.concurrent.schedule
 import kotlin.concurrent.timer
 
 class MainActivity : AppCompatActivity() {
-
+    var s =0
+    var arr = ArrayList<Int>()
+    var count =1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -61,8 +63,7 @@ class MainActivity : AppCompatActivity() {
     }
      fun game(){
          for(i in 0..6){
-             var s = 0
-             var arr = ArrayList<Int>()
+              s = 0
              arr.clear()
              for (j in 0..i){
                  var colour = (1..4).random()
@@ -70,13 +71,11 @@ class MainActivity : AppCompatActivity() {
                  colourSound(colour)
                  s = arr.size
              }
+             input()
+             if(count==0){
+                 break
+             }
          }
-                var buttonTag = 0
-               // val v = view as Button
-              //  buttonTag = v.tag.toString().toInt()
-                var arr2 = ArrayList<Int>()
-                arr2.add(buttonTag)
-                var s2 = arr2.size
                // for(i in 0..s){
                 //    if(arr[i]==arr2[i])
                   //      continue
@@ -87,5 +86,21 @@ class MainActivity : AppCompatActivity() {
                  //   }
 
                // }
+    }
+    fun input(view: View){
+        var arr2 = ArrayList<Int>()
+        arr2.clear()
+        for (i in 0..s){
+            var buttonTag = 0
+            val v = view as Button
+            buttonTag = v.tag.toString().toInt()
+            arr2.add(buttonTag)
+            var s2 = arr2.size
+        }
+        if (arr!=arr2){
+            var mp = MediaPlayer.create(this,R.raw.wrong)
+            mp.start()
+            count = 0
+        }
     }
 }
